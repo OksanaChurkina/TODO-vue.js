@@ -6,35 +6,6 @@
   </div>
 </template>
 
-<script>
-
-export default {
-  name: 'App',
-  data() {
-    return {
-      todos: []
-    }
-  },
-  mounted() {
-    fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
-        .then(response => response.json())
-        .then(json => {
-          this.todos = json
-        })
-  },
-  components: {
-  },
-  methods: {
-    removeTodo(id){
-      this.todos = this.todos.filter(t=> t.id !==id)
-    },
-    addTodo(todo){
-      this.todos.push(todo)
-    }
-  }
-}
-</script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
