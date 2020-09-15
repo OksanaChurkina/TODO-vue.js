@@ -1,13 +1,20 @@
 <template>
-  <div id="app">
-    <h1>To-DO Application!</h1>
+  <div>
+    <h2>To-DO Application!</h2>
+    <addTodo
+        @add-todo="addTodo"
+    />
     <hr>
-    <router-view />
+    <ToDoList
+        v-bind:todos = "todos"
+        @remove-todo = "removeTodo"
+    />
   </div>
 </template>
 
 <script>
-
+import ToDoList from '@/components/toDoList'
+import addTodo from '@/components/addTodo'
 export default {
   name: 'App',
   data() {
@@ -23,6 +30,8 @@ export default {
         })
   },
   components: {
+    ToDoList,
+    addTodo
   },
   methods: {
     removeTodo(id){
@@ -34,14 +43,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
